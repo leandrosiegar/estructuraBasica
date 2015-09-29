@@ -1,0 +1,45 @@
+AddDefaultCharset utf-8
+#DirectoryIndex en_obras.html
+RewriteEngine On
+#Esto es un comentario
+#RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+RewriteRule ^buscar-(.*) buscar/buscar.php?buscando=$1
+RewriteRule ^colaborador-(.*) colaboradores/colaboradores.php?accion=$1 
+RewriteRule ^critica-(.*) criticas/show_critica.php?urlCorta=$1
+RewriteRule ^criticas-(.*) criticas/criticas.php?accion=$1 
+RewriteRule ^doblaje-(.*) doblaje/show_doblaje.php?accion=$1 
+RewriteRule ^entre-bastidores-(.*) entre_bastidores/entre_bastidores.php?accion=$1 
+RewriteRule ^genios-del-doblaje-(.*) doblaje/doblaje.php?accion=$1 
+RewriteRule ^goyas-buscar-categoria.html goyas/goyas_buscar_categoria.php
+RewriteRule ^goyas-buscar-cineasta.html goyas/goyas_buscar_cineasta.php
+RewriteRule ^goyas-buscar-pelicula.html goyas/goyas_buscar_pelicula.php
+RewriteRule ^goyas-nominaciones-al-goya-(.*) goyas/goyas_anno.php?accion=$1 
+RewriteRule ^goyas-records-cineastas-(.*) goyas/goyas_records_cineastas.php?accion=$1
+RewriteRule ^goyas-records-peliculas-(.*) goyas/goyas_records_peliculas.php?accion=$1
+RewriteRule ^oscars-records-cineastas-(.*) oscars/oscars_records_cineastas.php?accion=$1
+RewriteRule ^oscars-records-peliculas-(.*) oscars/oscars_records_peliculas.php?accion=$1
+RewriteRule ^oscars-nominaciones-al-oscar-(.*) oscars/oscars_anno.php?accion=$1 
+RewriteRule ^oscars-buscar-categoria.html oscars/oscars_buscar_categoria.php
+RewriteRule ^oscars-buscar-cineasta.html oscars/oscars_buscar_cineasta.php
+RewriteRule ^oscars-buscar-pelicula.html oscars/oscars_buscar_pelicula.php
+#La siguiente regla -oscars es tanto cineastas como películas
+RewriteRule ^(.*)-oscars.html oscars/oscars_cineasta.php?accion=$1 
+#La siguiente regla -goyas es tanto cineastas como películas
+RewriteRule ^(.*)-goyas.html goyas/goyas_cineasta.php?accion=$1 
+RewriteRule ^documentales-(.*) documentales/documentales.php?accion=$1 
+RewriteRule ^no-es-musica-es-cine-(.*) noesmusica/noesmusica.php?accion=$1 
+RewriteRule ^que-grande-es-el-cine-(.*) garci/quegrande.php?accion=$1 
+RewriteRule ^youtube-(.*) youtube/youtube.php?accion=$1 
+RewriteRule ^(.*)-youtube.html youtube/show_youtube.php?accion=$1 
+
+RewriteCond $1 !^(index\.php|Oscars|Oscars\mantenimiento\|)
+
+ErrorDocument 404 /index.php 
+
+
+
